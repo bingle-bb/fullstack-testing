@@ -1,13 +1,23 @@
-// server.js
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
+
+// Middleware
 app.use(express.json());
 
-// Import routes
-app.use("/api", require("./routes/auth")); // <-- this means /api/register exists
+// Add CORS
+
+app.use(
+  cors({
+    origin: "https://full-stack-testing-frontend.vercel.app",
+  }),
+);
+
+// Routes
+app.use("/api", require("./routes/auth"));
 
 // MongoDB connection
 mongoose
