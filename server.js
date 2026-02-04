@@ -14,7 +14,7 @@ app.use(cors()); // Allow all origins (replace with frontend URL in production)
 app.use(express.json());
 
 // Routes
-app.use("/api/users", userRoutes);
+app.use("/api", require("./routes/auth"));
 
 // Start server
 const PORT = process.env.PORT || 5000;
