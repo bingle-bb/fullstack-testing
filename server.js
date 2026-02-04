@@ -9,16 +9,14 @@ const app = express();
 app.use(express.json());
 
 // Add CORS
-
 app.use(
   cors({
-    origin: "https://full-stack-testing-frontend.vercel.app",
+    origin: "https://full-stack-testing-frontend.vercel.app", // your frontend URL
   }),
 );
-const cors = require("cors");
 
 // Routes
-app.use("/api", require("./routes/auth"));
+app.use("/api", require("./routes/auth")); // register/login routes
 
 // MongoDB connection
 mongoose
@@ -26,6 +24,7 @@ mongoose
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
+// Start server
 app.listen(process.env.PORT || 5000, () => {
   console.log("Server running on port", process.env.PORT || 5000);
 });
