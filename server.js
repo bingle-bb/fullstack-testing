@@ -15,6 +15,7 @@ app.use(
     origin: "https://full-stack-testing-frontend.vercel.app",
   }),
 );
+const cors = require("cors");
 
 // Routes
 app.use("/api", require("./routes/auth"));
