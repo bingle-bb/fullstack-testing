@@ -1,16 +1,15 @@
+// server.js
 const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
 const app = express();
-
-// Must parse JSON
 app.use(express.json());
 
-// Routes
-app.use("/api", require("./routes/auth"));
+// Import routes
+app.use("/api", require("./routes/auth")); // <-- this means /api/register exists
 
-// Connect MongoDB
+// MongoDB connection
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
